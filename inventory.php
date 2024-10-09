@@ -99,7 +99,7 @@ tr:hover {
 }
 
 .add-item:hover {
-    background-color: #8B4513; /* Darker brown for hover effect */
+    background-color: #8B4513; 
 }
 
 .message {
@@ -169,7 +169,7 @@ th, td {
     text-align: left;
 }
 
-/* Specifically target table headers with higher specificity */
+
 table th {
     background-color: #A0522D !important;  /* Light brown */
     color: white;
@@ -340,7 +340,7 @@ tr:hover {
                 echo "<th>Quantity</th>";
                 echo "<th>Price</th>";
                 echo "<th>Expiration Date</th>";
-                echo "<th>Delivery Date/Time</th>"; // Add a header for Delivery Time
+                echo "<th>Delivery Date/Time</th>"; 
                 echo "<th>Actions</th>";
                 echo "</tr>";
                 
@@ -351,8 +351,8 @@ tr:hover {
                     echo "<td>" . htmlspecialchars($row['item_name']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['quantity']) . "</td>";
                     echo "<td>₱" . htmlspecialchars(number_format($row['price'], 2)) . "</td>";
-                    echo "<td>" . htmlspecialchars(date('Y-m-d', strtotime($row['expiration_date']))) . "</td>"; // Display expiration date
-                    echo "<td>" . htmlspecialchars(date('Y-m-d H:i:s', strtotime($row['delivery_time']))) . "</td>"; // Display delivery time
+                    echo "<td>" . htmlspecialchars(date('Y-m-d', strtotime($row['expiration_date']))) . "</td>"; 
+                    echo "<td>" . htmlspecialchars(date('Y-m-d H:i:s', strtotime($row['delivery_time']))) . "</td>"; 
                     echo "<td>";
                     echo '<a href="edit_item.php?id=' . urlencode($row['id']) . '" class="action-link">Edit</a>';
                     echo '<a href="delete_item.php?id=' . urlencode($row['id']) . '" class="action-link" onclick="return confirm(\'Are you sure you want to delete this item?\')">Delete</a>';
@@ -370,7 +370,7 @@ tr:hover {
             echo "<p class='message'>ERROR: Could not execute $sql. " . mysqli_error($conn) . "</p>";
         }
 
-        // Close connection
+        
         mysqli_close($conn);
         ?>
 
