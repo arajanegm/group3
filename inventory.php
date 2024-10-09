@@ -1,18 +1,13 @@
 <?php
-// Initialize the session
 session_start();
 
-// Enable error reporting
 error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-// Check if the user is logged in, if not redirect to login page
+ini_set('display_errors', 1)
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: login.php");
     exit;
 }
 
-// Include the database connection file for the coffee_shop database
 include_once('dbconnect1.php');
 ?>
 
@@ -334,7 +329,7 @@ tr:hover {
         </div>
 
         <?php
-        // Fetch inventory data from the database including delivery_time
+        
         $sql = "SELECT id, item_name, quantity, price, expiration_date, delivery_time FROM inventory";
         if ($result = mysqli_query($conn, $sql)) {
             if (mysqli_num_rows($result) > 0) {
@@ -349,7 +344,7 @@ tr:hover {
                 echo "<th>Actions</th>";
                 echo "</tr>";
                 
-                // Fetch each row of data
+                
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<tr>";
                     echo "<td>" . htmlspecialchars($row['id']) . "</td>";
@@ -366,7 +361,7 @@ tr:hover {
                 }
 
                 echo "</table>";
-                // Free the result set
+        
                 mysqli_free_result($result);
             } else {
                 echo "<p class='message'>No inventory items found.</p>";
@@ -413,25 +408,22 @@ tr:hover {
 
 
 <?php
-// Initialize the session only if it's not already active
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Enable error reporting
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Check if the user is logged in, if not redirect to login page
+
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: login.php");
     exit;
-}
-
-// Include the database connection file
+    
 include_once('dbconnect2.php');
 
-// Check if the connection is still valid
+
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
