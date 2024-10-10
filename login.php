@@ -1,32 +1,25 @@
 <?php
-// Start the session
 session_start();
 
-// Include the database connection file
 include_once('dbconnect.php');
 
-// Initialize variables
 $username = $password = "";
 $username_err = $password_err = $login_err = "";
 
-// Process form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    // Check if username is empty
     if (empty(trim($_POST["username"]))) {
         $username_err = "Please enter your username.";
     } else {
         $username = trim($_POST["username"]);
     }
 
-    // Check if password is empty
     if (empty(trim($_POST["password"]))) {
         $password_err = "Please enter your password.";
     } else {
         $password = trim($_POST["password"]);
     }
 
-    // Validate credentials
     if (empty($username_err) && empty($password_err)) {
         // Prepare a select statement
         $sql = "SELECT id, username, passkey FROM users WHERE username = ?";
@@ -35,27 +28,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "s", $param_username);
 
-            // Set parameters
             $param_username = $username;
 
-            // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
-                // Store result
+                
                 mysqli_stmt_store_result($stmt);
 
-                // Check if username exists, then verify password
+                
                 if (mysqli_stmt_num_rows($stmt) == 1) {
-                    // Bind result variables
+                
                     mysqli_stmt_bind_result($stmt, $id, $username, $stored_password);
                     if (mysqli_stmt_fetch($stmt)) {
                         if ($password === $stored_password) { // Compare plain text passwords
-                            // Password is correct, start a new session
+                            
                             session_regenerate_id(true);
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;
 
-                            // Redirect to inventory page
+                        
                             echo "<script> window.location.href='inventory.php';</script>";
                             exit();
                         } else {
@@ -69,12 +60,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "Oops! Something went wrong. Please try again later.";
             }
 
-            // Close statement
+    
             mysqli_stmt_close($stmt);
         }
     }
 
-    // Close connection
+    
     mysqli_close($conn);
 }
 ?>
