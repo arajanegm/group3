@@ -18,7 +18,7 @@ include_once('dbconnect1.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cafero - Inventory</title>
     <style>
-        /* Basic styling for the inventory table */
+        
         body {
     font-family: Arial, sans-serif;
     background-color: #f8f8f8;
@@ -184,7 +184,7 @@ tr:hover {
     background-color: #e0e0e0;
 }
 
-/* Specifically target the add-item button with higher specificity */
+
 .add-item {
     margin-top: 20px;
     display: inline-block;
@@ -542,7 +542,7 @@ if (!$conn) {
         </div>
 
         <?php
-        // Fetch inventory data from the beverages table
+        
         $sql = "SELECT id, item_name, quantity, price, expiration_date, delivery_time FROM beverages";
         if ($result = mysqli_query($conn, $sql)) {
             if (mysqli_num_rows($result) > 0) {
@@ -569,7 +569,7 @@ if (!$conn) {
             echo "<p class='message'>ERROR: Could not execute $sql. " . mysqli_error($conn) . "</p>";
         }
 
-        // Close the connection properly
+        
         mysqli_close($conn);
         ?>
 
@@ -593,25 +593,23 @@ if (!$conn) {
 
 
 <?php
-// Initialize the session only if it's not already active
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Enable error reporting
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Check if the user is logged in, if not redirect to login page
+
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: login.php");
     exit;
 }
-
-// Include the database connection file
+    
 include_once('dbconnect3.php');
 
-// Check if the connection is still valid
+
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
@@ -624,7 +622,7 @@ if (!$conn) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cafero - Baked Goods</title>
     <style>
-        /* Basic styling for the inventory table */
+        
         body {
             font-family: Arial, sans-serif;
             background-color: #f8f8f8;
@@ -732,11 +730,9 @@ if (!$conn) {
     </div>
 
     <?php
-    // Fetch inventory data from the baked_goods table
-    // Fetch inventory data from the baked_goods table
 $sql = "SELECT id, item_name, quantity, price, expiration_date, delivery_time FROM baked_goods";
 
-// Check if the connection is still open before querying
+
 if ($conn) {
     if ($result = mysqli_query($conn, $sql)) {
         if (mysqli_num_rows($result) > 0) {
@@ -781,25 +777,22 @@ if ($conn) {
 
 
 <?php
-// Initialize the session only if it's not already active
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Enable error reporting
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Check if the user is logged in, if not redirect to login page
+
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: login.php");
     exit;
 }
-
-// Include the database connection file
+    
 include_once('dbconnect4.php');
 
-// Check if the connection is still valid
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
@@ -812,7 +805,7 @@ if (!$conn) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cafero - Condiments</title>
     <style>
-        /* Basic styling for the inventory table */
+        
         body {
             font-family: Arial, sans-serif;
             background-color: #f8f8f8;
@@ -919,7 +912,7 @@ if (!$conn) {
         </div>
 
         <?php
-        // Fetch inventory data from the beverages table
+    
         $sql = "SELECT id, item_name, quantity, price, expiration_date, delivery_time FROM condiments";
         if ($result = mysqli_query($conn, $sql)) {
             if (mysqli_num_rows($result) > 0) {
@@ -946,7 +939,7 @@ if (!$conn) {
             echo "<p class='message'>ERROR: Could not execute $sql. " . mysqli_error($conn) . "</p>";
         }
 
-        // Close the connection properly
+    
         mysqli_close($conn);
         ?>
 
@@ -960,25 +953,25 @@ if (!$conn) {
 
 
 <?php
-// Initialize the session only if it's not already active
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Enable error reporting
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Check if the user is logged in, if not redirect to login page
+
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: login.php");
     exit;
 }
 
-// Include the database connection file
+
 include_once('dbconnect5.php');
 
-// Check if the connection is still valid
+
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
@@ -991,7 +984,7 @@ if (!$conn) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cafero - Equipment</title>
     <style>
-        /* Basic styling for the inventory table */
+        
         body {
             font-family: Arial, sans-serif;
             background-color: #f8f8f8;
@@ -1098,7 +1091,7 @@ if (!$conn) {
         </div>
 
         <?php
-        // Fetch inventory data from the equipment table without expiration_date
+        
         $sql = "SELECT id, item_name, quantity, price, delivery_time FROM equipment";
         if ($result = mysqli_query($conn, $sql)) {
             if (mysqli_num_rows($result) > 0) {
@@ -1124,7 +1117,7 @@ if (!$conn) {
             echo "<p class='message'>ERROR: Could not execute $sql. " . mysqli_error($conn) . "</p>";
         }
 
-        // Close the connection properly
+        
         mysqli_close($conn);
         ?>
 
@@ -1138,25 +1131,25 @@ if (!$conn) {
 
 
 <?php
-// Initialize the session only if it's not already active
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Enable error reporting
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Check if the user is logged in, if not redirect to login page
+
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: login.php");
     exit;
 }
 
-// Include the database connection file
+
 include_once('dbconnect6.php');
 
-// Check if the connection is still valid
+
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
@@ -1169,7 +1162,7 @@ if (!$conn) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cafero - Cleaning Supplies</title>
     <style>
-        /* Basic styling for the inventory table */
+        
         body {
             font-family: Arial, sans-serif;
             background-color: #f8f8f8;
@@ -1276,7 +1269,7 @@ if (!$conn) {
         </div>
 
         <?php
-        // Fetch inventory data from the equipment table without expiration_date
+        
         $sql = "SELECT id, item_name, quantity, price, delivery_time FROM cleaning_supplies";
         if ($result = mysqli_query($conn, $sql)) {
             if (mysqli_num_rows($result) > 0) {
@@ -1302,7 +1295,7 @@ if (!$conn) {
             echo "<p class='message'>ERROR: Could not execute $sql. " . mysqli_error($conn) . "</p>";
         }
 
-        // Close the connection properly
+        
         mysqli_close($conn);
         ?>
 
